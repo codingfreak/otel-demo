@@ -43,3 +43,8 @@ dotnet user-secrets set APPLICATIONINSIGHTS_CONNECTION_STRING "YOUR_CONNECTION_S
 ```
 
 and then open the Live Metrics of your Application Insights. You will see data flowing.
+
+## Traces
+
+All responses if this API will contain 3 additional headers `X-Activity-TraceId`, `X-Activity-SpanId` and `X-Activity-Id`. The trace id
+is the most important of these.

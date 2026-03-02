@@ -1,3 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(MSBuildThisFileDirectory)..\..\Base.props" />
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
+    </ItemGroup>
 </Project>
