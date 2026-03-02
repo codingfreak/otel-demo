@@ -11,11 +11,12 @@ as a container locally first:
 docker run --rm -it `
     -p 18888:18888 `
     -p 4317:18889 `
+    -e ASPIRE_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true `
     --name aspire-dashboard `
     mcr.microsoft.com/dotnet/aspire-dashboard:latest
 ```
 
-In the output of this command you'll see a token URL for the Aspire Dashboard.
+Visit the [Aspire Dashboard](http://localhost:18888/).
 
 Now run the following command to start the API:
 
@@ -31,6 +32,7 @@ curl --location 'https://localhost:7135/api/People' `
 --header 'Content-Type: application/json' `
 --data '{ "firstName": "Klaus", "lastName": "Testmann" }'
 curl --location 'https://localhost:7135/api/People'
+curl --location 'https://localhost:7135/api/Test?url=https%3A%2F%2Fwww.devdeer.com'
 ```
 
 In Aspire after some waiting (about 60s) you should see Traces with Logs and also under
@@ -47,4 +49,8 @@ and then open the Live Metrics of your Application Insights. You will see data f
 ## Traces
 
 All responses if this API will contain 3 additional headers `X-Activity-TraceId`, `X-Activity-SpanId` and `X-Activity-Id`. The trace id
-is the most important of these.
+is the most important of these because you can filter your traces by this id.
+
+## Known Issues
+
+Currently App Insights will only show live metrics but no traces, logs and so on.
