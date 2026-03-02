@@ -1,10 +1,8 @@
 ﻿namespace codingfreaks.OtelDemo.Logic.Models
 {
-    public class Person
+    public class PersonCreateModel
     {
         #region properties
-
-        public long Id { get; set; }
 
         public string Firstname { get; set; } = null!;
 

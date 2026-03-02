@@ -1,9 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web"><PropertyGroup>  <UserSecretsId>4575190b-a98a-4bd6-8652-9865a190fafc</UserSecretsId>
+  </PropertyGroup>
     <Import Project="$(MSBuildThisFileDirectory)..\..\Base.props" />
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
+        <PackageReference Include="Azure.Monitor.OpenTelemetry.AspNetCore" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" />
+        <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.Http" />
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\..\Logic\Logic.Core\Logic.Core.csproj" />
+      <ProjectReference Include="..\..\Logic\Logic.Interfaces\Logic.Interfaces.csproj" />
       <ProjectReference Include="..\..\Logic\Logic.Models\Logic.Models.csproj" />
+      <ProjectReference Include="..\..\Logic\Logic.OpenTelemetry\Logic.OpenTelemetry.csproj" />
+      <ProjectReference Include="..\..\Repositories\Repositories.Mock\Repositories.Mock.csproj" />
     </ItemGroup>
 </Project>

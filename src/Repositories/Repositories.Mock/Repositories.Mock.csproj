@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="$(MSBuildThisFileDirectory)..\..\Base.props" />
+    <ItemGroup>
+      <PackageReference Include="Bogus" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\Logic\Logic.Interfaces\Logic.Interfaces.csproj" />
+      <ProjectReference Include="..\..\Logic\Logic.OpenTelemetry\Logic.OpenTelemetry.csproj" />
+    </ItemGroup>
+</Project>

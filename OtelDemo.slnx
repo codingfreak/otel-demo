@@ -1,11 +1,20 @@
 <Solution>
   <Folder Name="/Logic/">
+    <Project Path="src/Logic/Logic.Core/Logic.Core.csproj" Id="21f0b276-d025-4482-b9a1-33e1f04189b6" />
+    <Project Path="src/Logic/Logic.Interfaces/Logic.Interfaces.csproj" Id="ea512b52-fa70-49b5-8712-1fa9c19560d8" />
     <Project Path="src/Logic/Logic.Models/Logic.Models.csproj" Id="7d61681d-d398-4f85-8803-ea2d375c1361" />
+    <Project Path="src/Logic/Logic.OpenTelemetry/Logic.OpenTelemetry.csproj" />
+  </Folder>
+  <Folder Name="/Repositories/">
+    <Project Path="src/Repositories/Repositories.Mock/Repositories.Mock.csproj" Id="30020faa-5def-4c55-bd76-1f1265e3274c" />
   </Folder>
   <Folder Name="/Services/">
     <Project Path="src/Services/Services.CoreApi/Services.CoreApi.csproj" Id="ad1956c0-d48b-4a6f-808b-afd9b632a1a8" />
   </Folder>
   <Folder Name="/_solution/">
+    <File Path=".gitignore" />
+    <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
     <File Path="src/Base.props" />
   </Folder>
 </Solution>

@@ -6,9 +6,11 @@
       "dotnetRunMessages": true,
       "launchBrowser": false,
       "applicationUrl": "https://localhost:7135",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development",
+            "OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:4317",
+            "OTEL_SERVICE_NAME": "codingfreaks.OtelSample"
+        }
     }
   }
 }
