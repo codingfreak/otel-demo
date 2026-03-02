@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Logic/">
+    <Project Path="src/Logic/Logic.Models/Logic.Models.csproj" Id="7d61681d-d398-4f85-8803-ea2d375c1361" />
+  </Folder>
+  <Folder Name="/Services/">
+    <Project Path="src/Services/Services.CoreApi/Services.CoreApi.csproj" Id="ad1956c0-d48b-4a6f-808b-afd9b632a1a8" />
+  </Folder>
+  <Folder Name="/_solution/">
+    <File Path="src/Base.props" />
+  </Folder>
+</Solution>
