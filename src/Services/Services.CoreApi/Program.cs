@@ -45,6 +45,7 @@ otel.WithTracing(tracing =>
     tracing.AddAspNetCoreInstrumentation();
     tracing.AddHttpClientInstrumentation();
     tracing.AddSource(Meters.ActivitySource!.Name);
+    // Ensure that sampling is not used.
     tracing.SetSampler(new AlwaysOnSampler());
 });
 if (!string.IsNullOrEmpty(otlpEndpoint))
@@ -56,6 +57,7 @@ if (!string.IsNullOrEmpty(appInsightsConnectionString))
     otel.UseAzureMonitor(amopt =>
     {
         amopt.ConnectionString = appInsightsConnectionString;
+        // Ensure that metrics are set to live
         amopt.EnableLiveMetrics = true;
     });
 }
