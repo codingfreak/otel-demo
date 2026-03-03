@@ -4,6 +4,7 @@
     <ItemGroup>
         <PackageReference Include="Azure.Monitor.OpenTelemetry.AspNetCore" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="NLog.Web.AspNetCore" />
         <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" />
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
         <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" />

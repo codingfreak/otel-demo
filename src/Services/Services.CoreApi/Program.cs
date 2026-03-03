@@ -5,6 +5,8 @@ using codingfreaks.OtelDemo.Logic.Core;
 using codingfreaks.OtelDemo.Logic.Interfaces;
 using codingfreaks.OtelDemo.Logic.OpenTelemetry;
 
+using NLog.Extensions.Logging;
+
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -18,16 +20,15 @@ var otlpName = builder.Configuration["OTEL_SERVICE_NAME"]
                ?? throw new InvalidOperationException("No OTEL_SERVICE_NAME configured.");
 var otlpEndpoint = builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"];
 Meters.Init(otlpName);
-builder.Logging.AddOpenTelemetry(logging =>
+builder.Logging.ClearProviders().AddOpenTelemetry(logging =>
+{
+    logging.IncludeFormattedMessage = true;
+    logging.IncludeScopes = true;
+    logging.AddAzureMonitorLogExporter(options =>
     {
-        logging.IncludeFormattedMessage = true;
-        logging.IncludeScopes = true;
-        logging.AddAzureMonitorLogExporter(options =>
-        {
-            options.ConnectionString = appInsightsConnectionString;
-        });
-    })
-    .SetMinimumLevel(LogLevel.Trace);
+        options.ConnectionString = appInsightsConnectionString;
+    });
+}).AddNLog();
 var otel = builder.Services.AddOpenTelemetry();
 otel.ConfigureResource(resource =>
 {
@@ -45,7 +46,7 @@ otel.WithTracing(tracing =>
     tracing.AddAspNetCoreInstrumentation();
     tracing.AddHttpClientInstrumentation();
     tracing.AddSource(Meters.ActivitySource!.Name);
-    // Ensure that sampling is not used.
+    // NOTE: Ensure that sampling is not used.
     tracing.SetSampler(new AlwaysOnSampler());
 });
 if (!string.IsNullOrEmpty(otlpEndpoint))
@@ -57,8 +58,6 @@ if (!string.IsNullOrEmpty(appInsightsConnectionString))
     otel.UseAzureMonitor(amopt =>
     {
         amopt.ConnectionString = appInsightsConnectionString;
-        // Ensure that metrics are set to live
-        amopt.EnableLiveMetrics = true;
     });
 }
 builder.Services.AddControllers();
